@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 struct _linked_list
 {
     int el;
@@ -59,6 +58,60 @@ void output(linked_list* head, int res) //output 'k' last elements
     }
 }
 
+void print_k_raz(linked_list* head, int kolvo)
+{
+    linked_list* beg = head->next;
+    linked_list* kon = head->next;
+
+    for (int i=0; i<kolvo; i++)
+    {
+        kon=kon->next;
+    }
+
+    while (kon!=NULL)
+    {
+        beg=beg->next;
+        kon=kon->next;
+    }
+
+    for (int i = 0; i < kolvo; i++)
+    {
+        printf("%d ",beg->el);
+        beg=beg->next;
+    }
+
+    puts("");
+}
+
+void printik(linked_list* head)
+{
+    linked_list* next = head->next;
+    while (next != NULL)
+    {
+        printf("%d ", next->el);
+        next = next->next;
+    }   
+    puts("") ;
+}
+
+int has_cycle(linked_list* head)
+{
+    linked_list* slow=head->next;
+    linked_list* fast=head->next;
+
+    while (fast!=NULL && fast->next!=NULL && fast->next->next!=NULL)
+    {
+        fast=fast->next->next->next;
+        slow=slow->next->next;
+        if (fast==slow)
+        {
+            return 1;
+        }
+        
+    }
+    return 0;
+}
+
 int main()
 {
     int cur = 0;
@@ -75,13 +128,26 @@ int main()
     int res=len(head);
     printf("%d\n", res);
 
-    linked_list* next = head->next;
-    while (next != NULL)
-    {
-        printf("%d ", next->el);
-        next = next->next;
-    }
+    printik(head);
 
     output(head, res);
+    puts("");
+
+    print_k_raz(head,4);
+    
+    head->next->next->next->next=head->next;
+
+
+    if (has_cycle(head))
+    {
+        puts("Is cycle");
+    }
+    else
+    {
+        puts("No cycle");
+    }
+    
+    
+
     return 0;
 }
