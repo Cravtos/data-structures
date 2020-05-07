@@ -112,42 +112,64 @@ int has_cycle(linked_list* head)
     return 0;
 }
 
+linked_list* reverse(linked_list* ll)
+{
+    if (ll == NULL)
+    {
+        return NULL;
+    }
+    else if (ll->next == NULL)
+    {
+        return ll;
+    }
+
+    linked_list* head = ll;
+    linked_list* tail = ll->next;
+
+    linked_list* last = reverse(tail);
+
+    tail->next = head;
+    head->next = NULL;
+
+    return last;
+}
+
 int main()
 {
     int cur = 0;
     linked_list* head = calloc(1, sizeof(linked_list));
-
+//
     while (!feof(stdin))
     {
         if (fscanf(stdin, "%d", &cur) != 1)
             break;
         push(head, cur);
     }
-
-    insert(head, 3, 1337);
-    int res=len(head);
-    printf("%d\n", res);
-
-    printik(head);
-
-    output(head, res);
-    puts("");
-
-    print_k_raz(head,4);
-    
-    head->next->next->next->next=head->next;
-
-
-    if (has_cycle(head))
-    {
-        puts("Is cycle");
-    }
-    else
-    {
-        puts("No cycle");
-    }
-    
-    
-
+//
+//    insert(head, 3, 1337);
+//    int res=len(head);
+//    printf("%d\n", res);
+//
+    linked_list* reversed = reverse(head->next);
+    printik(reversed);
+//
+//    output(head, res);
+//    puts("");
+//
+//    print_k_raz(head,4);
+//
+//    head->next->next->next->next=head->next;
+//
+//    if (has_cycle(head))
+//    {
+//        puts("Is cycle");
+//    }
+//    else
+//    {
+//        puts("No cycle");
+//    }
+//
+//
+//
     return 0;
 }
