@@ -91,7 +91,7 @@ void printik(linked_list* head)
         printf("%d ", next->el);
         next = next->next;
     }   
-    puts("") ;
+    puts("");
 }
 
 int has_cycle(linked_list* head)
@@ -112,33 +112,65 @@ int has_cycle(linked_list* head)
     return 0;
 }
 
-linked_list* reverse(linked_list* ll)
+linked_list* _reverse(linked_list* ll)
 {
-    if (ll == NULL)
-    {
-        return NULL;
-    }
-    else if (ll->next == NULL)
+    if (ll->next == NULL)
     {
         return ll;
     }
 
+    // ll = 1-2-3-4-5...
     linked_list* head = ll;
     linked_list* tail = ll->next;
+    // head = 1
+    // tail -> 2-3-4-5...
 
-    linked_list* last = reverse(tail);
+    linked_list* new_head = _reverse(tail);
+    // new_head -> ...5-4-3-2 <- tail
 
     tail->next = head;
     head->next = NULL;
 
-    return last;
+    return new_head;
+}
+
+void reverse(linked_list* head)
+{
+    if (head->next == NULL)
+        return;
+    linked_list* reversed = _reverse(head->next);
+    head->next = reversed;
+}
+
+void cycle_reverse(linked_list* head)
+{
+    linked_list* prev = NULL;
+    linked_list* cur = head->next;
+
+    while (cur != NULL)
+    {
+        linked_list* next = cur->next;
+        // @-1-  2-3-4-5
+        // cur^  ^next
+
+        cur->next = prev;
+        // @-1  2-3-4-5
+        //cur^  ^next
+
+        prev = cur;
+        cur = next;
+        // @-2-1 3-4-5
+        //   c p n
+    }
+
+    head->next = prev;
 }
 
 int main()
 {
     int cur = 0;
     linked_list* head = calloc(1, sizeof(linked_list));
-//
+
     while (!feof(stdin))
     {
         if (fscanf(stdin, "%d", &cur) != 1)
@@ -150,8 +182,8 @@ int main()
 //    int res=len(head);
 //    printf("%d\n", res);
 //
-    linked_list* reversed = reverse(head->next);
-    printik(reversed);
+    reverse(head);
+    // printik(head);
 //
 //    output(head, res);
 //    puts("");
