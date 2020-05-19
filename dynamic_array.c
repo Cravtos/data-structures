@@ -31,11 +31,11 @@ void push(dyn_arr* da, int el)
 
 void insert(dyn_arr* da, int pos, int el)
 {
-    // bound check here
+    // bound check should be here
 
     for (int i = da->len - 1; i >= pos; i--)
     {
-        da->arr[i+1] = da->arr[i];
+        da->arr[i + 1] = da->arr[i];
     }
     da->arr[pos] = el;
     da->len++;
@@ -51,9 +51,6 @@ int main()
             break;
         push(da, cur);
     }
-    insert(da, 2, 1337);
-    for (int i = da->len - 1; i >= 0; i--)
-    {
-        printf("%d ", da->arr[i]);
-    }
+
+    return 0;
 }

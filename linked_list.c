@@ -40,60 +40,58 @@ int len(linked_list* ll)
     return res;
 }
 
-void output(linked_list* head, int res) //output 'k' last elements
+// Print last elements
+void tail_uneffective(linked_list* head, size_t size, size_t k)
 {
-    printf("\n");
-    linked_list* head1 = head->next;
-    int k=2;
+    linked_list* list = head->next;
 
-    for (int i=0; i < res-k; i++)
+    for (int i = 0; i < size - k; i++)
     {
-        head1 = head1->next;
+        list = list->next;
     }
 
-    for (int j=res-k; j < res; j++)
+    for (int j = size - k; j < size; j++)
     {
-        printf("%d ", head1->el);
-        head1 = head1->next;
+        printf("%d ", list->el);
+        list = list->next;
     }
 }
 
-void print_k_raz(linked_list* head, int kolvo)
+// Print last elements.
+void tail(linked_list* head, size_t amount)
 {
     linked_list* beg = head->next;
-    linked_list* kon = head->next;
+    linked_list* end = head->next;
 
-    for (int i=0; i<kolvo; i++)
+    for (size_t i = 0; i < amount; i++)
     {
-        kon=kon->next;
+        end = end->next;
     }
 
-    while (kon!=NULL)
+    while (end != NULL)
     {
-        beg=beg->next;
-        kon=kon->next;
+        beg = beg->next;
+        end = end->next;
     }
 
-    for (int i = 0; i < kolvo; i++)
+    for (int i = 0; i < amount; i++)
     {
-        printf("%d ",beg->el);
-        beg=beg->next;
+        printf("%d ", beg->el);
+        beg = beg->next;
     }
-
-    puts("");
 }
 
-void printik(linked_list* head)
+void print(linked_list* head)
 {
     linked_list* next = head->next;
     while (next != NULL)
     {
         printf("%d ", next->el);
         next = next->next;
-    }   
-    puts("");
+    }
 }
 
+// Detects cycles in list using fast and slow pointers.
 int has_cycle(linked_list* head)
 {
     linked_list* slow=head->next;
@@ -112,6 +110,7 @@ int has_cycle(linked_list* head)
     return 0;
 }
 
+
 linked_list* _reverse(linked_list* ll)
 {
     if (ll->next == NULL)
@@ -119,14 +118,10 @@ linked_list* _reverse(linked_list* ll)
         return ll;
     }
 
-    // ll = 1-2-3-4-5...
     linked_list* head = ll;
     linked_list* tail = ll->next;
-    // head = 1
-    // tail -> 2-3-4-5...
 
     linked_list* new_head = _reverse(tail);
-    // new_head -> ...5-4-3-2 <- tail
 
     tail->next = head;
     head->next = NULL;
@@ -150,17 +145,11 @@ void cycle_reverse(linked_list* head)
     while (cur != NULL)
     {
         linked_list* next = cur->next;
-        // @-1-  2-3-4-5
-        // cur^  ^next
 
         cur->next = prev;
-        // @-1  2-3-4-5
-        //cur^  ^next
 
         prev = cur;
         cur = next;
-        // @-2-1 3-4-5
-        //   c p n
     }
 
     head->next = prev;
@@ -177,31 +166,6 @@ int main()
             break;
         push(head, cur);
     }
-//
-//    insert(head, 3, 1337);
-//    int res=len(head);
-//    printf("%d\n", res);
-//
-    reverse(head);
-    // printik(head);
-//
-//    output(head, res);
-//    puts("");
-//
-//    print_k_raz(head,4);
-//
-//    head->next->next->next->next=head->next;
-//
-//    if (has_cycle(head))
-//    {
-//        puts("Is cycle");
-//    }
-//    else
-//    {
-//        puts("No cycle");
-//    }
-//
-//
-//
+
     return 0;
 }
