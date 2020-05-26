@@ -1,13 +1,7 @@
+#include "linked_list.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-
-struct _linked_list
-{
-    int el;
-    struct _linked_list* next;
-};
-
-typedef struct _linked_list linked_list;
 
 void push(linked_list* ll, int el)
 {
@@ -155,17 +149,17 @@ void cycle_reverse(linked_list* head)
     head->next = prev;
 }
 
-int main()
-{
-    int cur = 0;
-    linked_list* head = calloc(1, sizeof(linked_list));
-
-    while (!feof(stdin))
-    {
-        if (fscanf(stdin, "%d", &cur) != 1)
-            break;
-        push(head, cur);
-    }
-
-    return 0;
-}
+//int main()
+//{
+//    int cur = 0;
+//    linked_list* head = calloc(1, sizeof(linked_list));
+//
+//    while (!feof(stdin))
+//    {
+//        if (fscanf(stdin, "%d", &cur) != 1)
+//            break;
+//        push(head, cur);
+//    }
+//
+//    return 0;
+//}
