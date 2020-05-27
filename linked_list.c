@@ -148,18 +148,3 @@ void cycle_reverse(linked_list* head)
 
     head->next = prev;
 }
-
-//int main()
-//{
-//    int cur = 0;
-//    linked_list* head = calloc(1, sizeof(linked_list));
-//
-//    while (!feof(stdin))
-//    {
-//        if (fscanf(stdin, "%d", &cur) != 1)
-//            break;
-//        push(head, cur);
-//    }
-//
-//    return 0;
-//}
