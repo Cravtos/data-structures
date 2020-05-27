@@ -33,17 +33,3 @@ void insert(dyn_arr* da, int pos, int el)
     da->arr[pos] = el;
     da->len++;
 }
-
-//int main()
-//{
-//    int cur = 0;
-//    dyn_arr* da = calloc(1, sizeof(dyn_arr));
-//    while (!feof(stdin))
-//    {
-//        if (fscanf(stdin, "%d", &cur) != 1)
-//            break;
-//        push(da, cur);
-//    }
-//
-//    return 0;
-//}
