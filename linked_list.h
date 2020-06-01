@@ -20,5 +20,6 @@ void print(linked_list* head);
 int has_cycle(linked_list* head);
 void reverse(linked_list* head);
 void cycle_reverse(linked_list* head);
+int delete(linked_list* ll, int pos);
 
 #endif //DATA_STRUCTURES__LINKED_LIST_H
