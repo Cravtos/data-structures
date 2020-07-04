@@ -148,3 +148,18 @@ void cycle_reverse(linked_list* head)
 
     head->next = prev;
 }
+
+int delete(linked_list* ll, int pos)
+{
+    for (int i = 0; i < pos; i++)
+    {
+        ll = ll->next;
+    }
+
+    int el = ll->next->el;
+    linked_list* ll1 = ll->next;
+    ll->next=ll->next->next;
+    free(ll1);
+
+    return el;
+}
