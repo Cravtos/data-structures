@@ -42,11 +42,23 @@ void test_stack()
         printf("%d \n", stack_pop(res));
     }
 }
+    void test_dynamic_array()
+    {
+        int cur = 0;
+        dyn_arr* da = calloc(1, sizeof(dyn_arr));
+        while (!feof(stdin))
+        {
+            if (fscanf(stdin, "%d", &cur) != 1)
+                break;
+            push(da, cur);
+        }
+    }
 int main()
 {
     //test_linked_list();
     //test_stack();
-    printf("govmiwe");
+    //test_dynamic_array
+
     struct stack_queue q = stack_queue_new();
     stack_queue_push(q, 1);
     stack_queue_push(q, 2);

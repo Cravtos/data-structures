@@ -33,7 +33,10 @@ int len(linked_list* ll)
     }
     return res;
 }
-
+int is_empty(linked_list *ll){
+    if(ll->next == NULL)return 1;
+    return 0;
+}
 // Print last elements
 void tail_uneffective(linked_list* head, size_t size, size_t k)
 {

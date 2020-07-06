@@ -15,6 +15,6 @@ stack stack_new();
 void stack_push(stack s, int element);
 int stack_pop(stack s);
 int stack_len(stack s);
-
+int stack_is_empty(stack s);
 
 #endif //DATA_STRUCTURES__STACK_H

@@ -21,4 +21,5 @@ int has_cycle(linked_list* head);
 void reverse(linked_list* head);
 void cycle_reverse(linked_list* head);
 int delete(linked_list* ll, int pos);
+int is_empty(linked_list * ll);
 #endif //DATA_STRUCTURES__LINKED_LIST_H

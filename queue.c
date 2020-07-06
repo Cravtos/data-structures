@@ -22,19 +22,18 @@ struct stack_queue stack_queue_new()
 
 int stack_queue_pop(struct stack_queue s)
 {
-    while (stack_len(s.a) != 0)
-    {
-        stack_push(s.b, stack_pop(s.a));
+    if(stack_is_empty(s.b)) {
+        int len = stack_len(s.a);
+        while (len != 0) {
+            stack_push(s.b, stack_pop(s.a));
+            len--;
+        }
     }
     return stack_pop(s.b);
 }
 
 void stack_queue_push(struct stack_queue queue, int a)
 {
-    while(stack_len(queue.b) != 0)
-    {
-        stack_push(queue.a, stack_pop(queue.b));
-    }
     stack_push(queue.a, a);
 }
 
