@@ -3,7 +3,7 @@
 // Вот тута пишем локальные инклюды.
 #include "linked_list.h"
 #include "stack.h"
-#include "queue.h"
+#include "stack_queue.h"
 
 
 
@@ -42,7 +42,7 @@ void test_stack()
         printf("%d \n", stack_pop(res));
     }
 }
-    void test_dynamic_array()
+void test_dynamic_array()
     {
         int cur = 0;
         dyn_arr* da = calloc(1, sizeof(dyn_arr));
@@ -53,12 +53,9 @@ void test_stack()
             push(da, cur);
         }
     }
-int main()
-{
-    //test_linked_list();
-    //test_stack();
-    //test_dynamic_array
 
+void test_stack_queue()
+{
     struct stack_queue q = stack_queue_new();
     stack_queue_push(q, 1);
     stack_queue_push(q, 2);
@@ -67,5 +64,13 @@ int main()
     stack_queue_push(q, 3);
     printf("%d ", stack_queue_pop(q));
     printf("%d ", stack_queue_pop(q));
+}
+int main()
+{
+    //test_linked_list();
+    //test_stack();
+    //test_dynamic_array();
+    test_stack_queue();
+
     return 0;
 }
