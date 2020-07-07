@@ -16,3 +16,17 @@ Complexity of
 - `deletion(head, index)` **O(n)** (at worst) 
 - `get(head, index)` **O(n)** (at worst)
 - `"insert after current"` **O(1)** **[main feature]**
+- `is_empty(head)` **O(1)**
+
+### Stack using linked list
+- `stack stack_new()` 
+- `void stack_push(stack s, int element)` **O(1)** 
+- `int stack_pop(stack s)` **O(1)**  
+- `int stack_len(stack s)` **O(n)** 
+- `is_empty(head)` **O(1)**
+### Queue using stack
+Complexity of
+- `stack_queue_new()` 
+- `stack_queue_len(struct stack_queue s)` **O(n)**
+- `stack_queue_push(struct stack_queue queue, int a)` **O(1)** 
+- `stack_queue_pop(struct stack_queue s)` **O(1)** (O(n) worst case)

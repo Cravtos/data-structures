@@ -1,4 +1,5 @@
 #include "stack.h"
+#include "linked_list.h"
 
 #include <stdio.h>
 
@@ -17,6 +18,10 @@ void stack_push(stack s, int element)
 int stack_pop(stack s)
 {
     return delete(s.ll, 0);
+}
+
+int stack_is_empty(stack s){
+    return is_empty(s.ll);
 }
 
 int stack_len(stack s)
