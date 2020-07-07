@@ -21,7 +21,7 @@ Complexity of
 ### Stack using linked list
 - `stack stack_new()` 
 - `void stack_push(stack s, int element)` **O(1)** 
-- `int stack_pop(stack s)` **O(n)** (at worst) 
+- `int stack_pop(stack s)` **O(1)**  
 - `int stack_len(stack s)` **O(n)** 
 - `is_empty(head)` **O(1)**
 ### Queue using stack
