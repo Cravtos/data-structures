@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void push(dyn_arr* da, int el)
+void push_dynamic(dyn_arr* da, int el)
 {
     if (da->arr == NULL)
     {
@@ -22,7 +22,7 @@ void push(dyn_arr* da, int el)
     da->len++;
 }
 
-void insert(dyn_arr* da, int pos, int el)
+void insert_dynamic(dyn_arr* da, int pos, int el)
 {
     // bound check should be here
 
